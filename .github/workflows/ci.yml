@@ -1,0 +1,19 @@
+name:CI python
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up python
+      uses: actions/setup-python@v5
+      with:
+        python-version:3.11
+    - name: install dependencies
+      run: pip instll -r requirements.txt || echo "No requirements"
+    - name: Run app
+      run: python app.py
+
